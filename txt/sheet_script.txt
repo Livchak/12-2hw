@@ -1,0 +1,182 @@
+mysql> USE sakila;
+mysql> SELECT * from zadanie2;
+ERROR 1146 (42S02): Table 'sakila.zadanie2' doesn't exist
+mysql> create table zadanie2 ( table_name VARCHAR(50), name_primary_key VARCHAR(50) );
+Query OK, 0 rows affected (0.09 sec)
+
+mysql> SELECT * from zadanie2;
+Empty set (0.00 sec)
+
+mysql> show tables ;
++----------------------------+
+| Tables_in_sakila           |
++----------------------------+
+| actor                      |
+| actor_info                 |
+| address                    |
+| category                   |
+| city                       |
+| country                    |
+| customer                   |
+| customer_list              |
+| film                       |
+| film_actor                 |
+| film_category              |
+| film_list                  |
+| film_temp                  |
+| film_text                  |
+| inventory                  |
+| language                   |
+| nicer_but_slower_film_list |
+| payment                    |
+| rental                     |
+| sales_by_film_category     |
+| sales_by_store             |
+| staff                      |
+| staff_list                 |
+| store                      |
+| zadanie2                   |
++----------------------------+
+25 rows in set (0.00 sec)
+
+mysql> SELECT * from  information_schema.tables limit 1;
++---------------+--------------+--------------+------------+--------+---------+------------+------------+----------------+-------------+-----------------+--------------+-----------+----------------+---------------------+-------------+------------+-----------------+----------+---------------------------------------+-------------------+
+| TABLE_CATALOG | TABLE_SCHEMA | TABLE_NAME   | TABLE_TYPE | ENGINE | VERSION | ROW_FORMAT | TABLE_ROWS | AVG_ROW_LENGTH | DATA_LENGTH | MAX_DATA_LENGTH | INDEX_LENGTH | DATA_FREE | AUTO_INCREMENT | CREATE_TIME         | UPDATE_TIME | CHECK_TIME | TABLE_COLLATION | CHECKSUM | CREATE_OPTIONS                        | TABLE_COMMENT     |
++---------------+--------------+--------------+------------+--------+---------+------------+------------+----------------+-------------+-----------------+--------------+-----------+----------------+---------------------+-------------+------------+-----------------+----------+---------------------------------------+-------------------+
+| def           | mysql        | columns_priv | BASE TABLE | InnoDB |      10 | Dynamic    |          0 |              0 |       16384 |               0 |            0 |   4194304 |           NULL | 2023-08-06 12:21:40 | NULL        | NULL       | utf8mb3_bin     |     NULL | row_format=DYNAMIC stats_persistent=0 | Column privileges |
++---------------+--------------+--------------+------------+--------+---------+------------+------------+----------------+-------------+-----------------+--------------+-----------+----------------+---------------------+-------------+------------+-----------------+----------+---------------------------------------+-------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT TABLE_SCHEMA , TABLE_NAME  from information_schema.tables WHERE TABLE_SCHEMA  = 'sakila';
++--------------+----------------------------+
+| TABLE_SCHEMA | TABLE_NAME                 |
++--------------+----------------------------+
+| sakila       | actor                      |
+| sakila       | actor_info                 |
+| sakila       | address                    |
+| sakila       | category                   |
+| sakila       | city                       |
+| sakila       | country                    |
+| sakila       | customer                   |
+| sakila       | customer_list              |
+| sakila       | film                       |
+| sakila       | film_actor                 |
+| sakila       | film_category              |
+| sakila       | film_list                  |
+| sakila       | film_temp                  |
+| sakila       | film_text                  |
+| sakila       | inventory                  |
+| sakila       | language                   |
+| sakila       | nicer_but_slower_film_list |
+| sakila       | payment                    |
+| sakila       | rental                     |
+| sakila       | sales_by_film_category     |
+| sakila       | sales_by_store             |
+| sakila       | staff                      |
+| sakila       | staff_list                 |
+| sakila       | store                      |
+| sakila       | zadanie2                   |
++--------------+----------------------------+
+25 rows in set (0.00 sec)
+
+mysql> USE sakila;
+ELECT * FROM zadanie2;
+Database changed
+mysql> SELECT * FROM zadanie2;
++----------------------------+------------------+
+| table_name                 | name_primary_key |
++----------------------------+------------------+
+| actor                      | NULL             |
+| actor_info                 | NULL             |
+| address                    | NULL             |
+| category                   | NULL             |
+| city                       | NULL             |
+| country                    | NULL             |
+| customer                   | NULL             |
+| customer_list              | NULL             |
+| film                       | NULL             |
+| film_actor                 | NULL             |
+| film_category              | NULL             |
+| film_list                  | NULL             |
+| film_temp                  | NULL             |
+| film_text                  | NULL             |
+| inventory                  | NULL             |
+| language                   | NULL             |
+| nicer_but_slower_film_list | NULL             |
+| payment                    | NULL             |
+| rental                     | NULL             |
+| sales_by_film_category     | NULL             |
+| sales_by_store             | NULL             |
+| staff                      | NULL             |
+| staff_list                 | NULL             |
+| store                      | NULL             |
+| zadanie2                   | NULL             |
++----------------------------+------------------+
+25 rows in set (0.00 sec)
+
+mysql> delete from zadanie2;
+Query OK, 25 rows affected (0.01 sec)
+
+mysql> SELECT * FROM  information_schema.key_column_usage limit 1;
++--------------------+-------------------+-----------------+---------------+--------------+--------------+-------------+------------------+-------------------------------+-------------------------+-----------------------+------------------------+
+| CONSTRAINT_CATALOG | CONSTRAINT_SCHEMA | CONSTRAINT_NAME | TABLE_CATALOG | TABLE_SCHEMA | TABLE_NAME   | COLUMN_NAME | ORDINAL_POSITION | POSITION_IN_UNIQUE_CONSTRAINT | REFERENCED_TABLE_SCHEMA | REFERENCED_TABLE_NAME | REFERENCED_COLUMN_NAME |
++--------------------+-------------------+-----------------+---------------+--------------+--------------+-------------+------------------+-------------------------------+-------------------------+-----------------------+------------------------+
+| def                | mysql             | PRIMARY         | def           | mysql        | columns_priv | Host        |                1 |                          NULL | NULL                    | NULL                  | NULL                   |
++--------------------+-------------------+-----------------+---------------+--------------+--------------+-------------+------------------+-------------------------------+-------------------------+-----------------------+------------------------+
+1 row in set (0.01 sec)
+
+mysql> SELECT TABLE_NAME, COLUMN_NAME from information_schema.key_column_usage  WHERE table_schema = 'sakila' AND CONSTRAINT_NAME = 'primary';
++---------------+--------------+
+| TABLE_NAME    | COLUMN_NAME  |
++---------------+--------------+
+| actor         | actor_id     |
+| address       | address_id   |
+| category      | category_id  |
+| city          | city_id      |
+| country       | country_id   |
+| customer      | customer_id  |
+| film          | film_id      |
+| film_actor    | actor_id     |
+| film_actor    | film_id      |
+| film_category | film_id      |
+| film_category | category_id  |
+| film_text     | film_id      |
+| inventory     | inventory_id |
+| language      | language_id  |
+| payment       | payment_id   |
+| rental        | rental_id    |
+| staff         | staff_id     |
+| store         | store_id     |
++---------------+--------------+
+18 rows in set (0.01 sec)
+
+mysql> INSERT INTO zadanie2 (table_name, name_primary_key)
+    -> select TABLE_NAME, COLUMN_NAME from information_schema.key_column_usage
+    -> WHERE table_schema = 'sakila' AND CONSTRAINT_NAME = 'primary';
+Query OK, 18 rows affected (0.03 sec)
+Records: 18  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM  zadanie2;
++---------------+------------------+
+| table_name    | name_primary_key |
++---------------+------------------+
+| actor         | actor_id         |
+| address       | address_id       |
+| category      | category_id      |
+| city          | city_id          |
+| country       | country_id       |
+| customer      | customer_id      |
+| film          | film_id          |
+| film_actor    | actor_id         |
+| film_actor    | film_id          |
+| film_category | film_id          |
+| film_category | category_id      |
+| film_text     | film_id          |
+| inventory     | inventory_id     |
+| language      | language_id      |
+| payment       | payment_id       |
+| rental        | rental_id        |
+| staff         | staff_id         |
+| store         | store_id         |
++---------------+------------------+
+18 rows in set (0.00 sec)
