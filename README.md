@@ -8,14 +8,14 @@
 
 1. `Поднять MYSQL, создать пользователя и проверить список пользователей`
 **MYSQL service** 
-<img src = "img/1.1.png" width = 50%>
+<img src = "img/1.1.png" width = 80%>
 
 **Манипуляции с пользователем** 
-<img src = "img/1.2-3.png" width = 50%>
+<img src = "img/1.2-3.png" width = 80%>
 
 2. `Дайте все права для пользователя и посмотрите список прав`
 **Манипуляции с правами пользователя** 
-<img src = "img/1.4-5.png" width = 50%>
+<img src = "img/1.4-5.png" width = 100%>
 
 3. `Восстановите дамп в базу данных`
 **список таблиц** 
@@ -24,7 +24,7 @@
 
 4. `Вывести ER-диаграмму`
 **ER-диаграмма** 
-<img src = "img/1.8.png" width = 50%>
+<img src = "img/1.8.png" width = 100%>
 
 ---
 
@@ -76,8 +76,8 @@ mysql> SELECT * FROM zadanie2;
 
 1. `запрос прав у пользователя sys_temp`
 **show grants** 
-<img src = "img/grants_sakila_add.png" width = 50%>
+<img src = "img/grants_sakila_add.png" width = 100%>
 
 2. `убираем права на внесение, изменение и удаление данных из базы sakila`
 **revoke** 
-<img src = "img/revoke_sakila_purge.png" width = 50%>
+<img src = "img/revoke_sakila_purge.png" width = 100%>
